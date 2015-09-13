@@ -1,0 +1,28 @@
+// https://leetcode.com/problems/isomorphic-strings/
+
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+        char chMap[256] = {0};
+        char chMap2[256] = {0};
+        for(size_t i = 0; i < s.length(); ++i)
+        {
+            if(chMap[s[i]] == 0)
+            {
+                if(chMap2[t[i]] == 0)
+                {
+                  chMap[s[i]] = t[i];
+                  chMap2[t[i]] = s[i];
+                  continue;
+                }
+                return false;
+            }
+            else if(chMap[s[i]] != t[i])
+            {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+};
